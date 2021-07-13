@@ -7,32 +7,18 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
 
-namespace WindowsFormsApplication2
+namespace ConsoleApplication1
 {
-    class Client
+    class Server
     {
-        static IPAddress idAddr;
         static int port;
         static Socket listenSocket;
-
+        static List<IPEndPoint> clientsArr = new List<IPEndPoint>();
         static void Main(string[] args)
         {
-            string msg;
-            byte[] data;
-
             try
             {
-                //idAddr = IPAddress.Parse("192.168.1.71");
-                idAddr = IPAddress.Parse("127.0.0.1");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("ERROR: " + ex.ToString() + "\n" + ex.Message);
-            }
-
-            try
-            {
-                port = Int32.Parse("32123"); //TODO уточнить
+                port = Int32.Parse("8000");
             }
             catch (Exception ex)
             {
@@ -44,17 +30,7 @@ namespace WindowsFormsApplication2
                 listenSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
                 Task listenThread = new Task(listen);
                 listenThread.Start();
-
-                while (true)
-                {
-                    msg = Console.ReadLine();
-                    data = Encoding.Unicode.GetBytes(msg);
-
-                    EndPoint pnt = new IPEndPoint(idAddr, port);
-
-                    listenSocket.SendTo(data, pnt);
-                    data = null;
-                }
+                listenThread.Wait();
             }
             catch (Exception ex)
             {
@@ -72,10 +48,11 @@ namespace WindowsFormsApplication2
             IPEndPoint remoteFull;
             int count;
             byte[] data = new byte[256];
+            bool isNew;
 
             try
             {
-                IPEndPoint localIP = new IPEndPoint(IPAddress.Parse("0.0.0.0"), 0);
+                IPEndPoint localIP = new IPEndPoint(IPAddress.Parse("0.0.0.0"), port);
                 listenSocket.Bind(localIP);
 
                 while (true)
@@ -96,6 +73,23 @@ namespace WindowsFormsApplication2
                                                         str.ToString());
 
                     str.Clear();
+
+                    isNew = true;
+
+                    for (int i = 0; i < clientsArr.Count; i++)
+                    {
+                        if (clientsArr[i].Address.ToString() == remoteFull.Address.ToString())
+                        {
+                            isNew = false;
+                        }
+                    }
+
+                    if (isNew)
+                    {
+                        clientsArr.Add(remoteFull);
+                    }
+
+                    sendAll(str.ToString(), remoteFull.Address.ToString());
                 }
             }
             catch (Exception ex)
@@ -108,6 +102,19 @@ namespace WindowsFormsApplication2
             }
         }
 
+        private static void sendAll(string str, string ip)
+        {
+            byte[] data = Encoding.Unicode.GetBytes(str);
+
+            for (int i = 0; i < clientsArr.Count; i++)
+            {
+                if (clientsArr[i].Address.ToString() != ip)
+                {
+                    listenSocket.SendTo(data, clientsArr[i]);
+                }
+            }
+        }
+
         private static void close()
         {
             if (listenSocket != null)
@@ -117,7 +124,7 @@ namespace WindowsFormsApplication2
                 listenSocket = null;
             }
 
-            Console.WriteLine(">>> Client was died");
+            Console.WriteLine(">>> Server was died");
         }
     }
 }
