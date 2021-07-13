@@ -13,4 +13,6 @@
 4. С использованием визуальных компонентов вывести на форму программы N амплитуд в логарифмическом масштабе
 
 ### Результат работы
-![image](https://user-images.githubusercontent.com/54107546/124512972-5c8ca280-dde2-11eb-93a4-607740d97eb7.png)
+![image](https://user-images.githubusercontent.com/54107546/125502224-6b5ad9d1-704c-4a98-90cd-d82da025a3e2.png)
+
+![image](https://user-images.githubusercontent.com/54107546/125502355-a922efcd-87ac-4f3c-8024-3b7c395a5f0b.png)
