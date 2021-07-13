@@ -16,3 +16,8 @@
 ![image](https://user-images.githubusercontent.com/54107546/125502224-6b5ad9d1-704c-4a98-90cd-d82da025a3e2.png)
 
 ![image](https://user-images.githubusercontent.com/54107546/125502355-a922efcd-87ac-4f3c-8024-3b7c395a5f0b.png)
+
+## Задание 2
+### Текст задания
+Реализовать модель клиент/сервер на сокетах UDP  
+
