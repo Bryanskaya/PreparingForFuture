@@ -1,0 +1,51 @@
+\babel@toc {russian}{}
+\contentsline {section}{Введение}{6}{Doc-Start}%
+\contentsline {section}{Основная часть}{7}{Doc-Start}%
+\contentsline {section}{\numberline {1}Общие положения}{7}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Канал межблочного обмена (КМБО)}{7}{subsection.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.1}Основные характеристики канала}{7}{subsubsection.1.1.1}%
+\contentsline {subsubsection}{\numberline {1.1.2}Состав канала}{7}{subsubsection.1.1.2}%
+\contentsline {subsubsection}{\numberline {1.1.3}Форматы кадров информационного обмена}{8}{subsubsection.1.1.3}%
+\contentsline {subsubsection}{\numberline {1.1.4}Требования к контроллеру}{9}{subsubsection.1.1.4}%
+\contentsline {subsubsection}{\numberline {1.1.5}Требования к оконечному устройству}{10}{subsubsection.1.1.5}%
+\contentsline {subsection}{\numberline {1.2}USB-КМБО}{10}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}Общее}{10}{subsubsection.1.2.1}%
+\contentsline {subsubsection}{\numberline {1.2.2}Состав изделия}{11}{subsubsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.3}PCI-КМБО}{12}{subsection.1.3}%
+\contentsline {subsubsection}{\numberline {1.3.1}Основные части}{12}{subsubsection.1.3.1}%
+\contentsline {subsubsection}{\numberline {1.3.2}Режимы изделия}{13}{subsubsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.4}Ethernet-КМБО}{14}{subsection.1.4}%
+\contentsline {subsubsection}{\numberline {1.4.1}Общее}{14}{subsubsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.5}Вывод}{14}{subsection.1.5}%
+\contentsline {section}{\numberline {2}Конструкторский раздел}{15}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Общий алгоритм}{15}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}USB}{15}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}Функция инициализации (USB$\_$Open)}{15}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}Прекращение работы с USB (USB$\_$Close)}{17}{subsubsection.2.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.3}Функция записи данных в устройство USB-КМБО (USB$\_$Write)}{17}{subsubsection.2.2.3}%
+\contentsline {subsubsection}{\numberline {2.2.4}Функция чтения данных из устройства USB-КМБО (USB$\_$Read)}{19}{subsubsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.3}PCI}{20}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Функция инициализации (PCI$\_$Open)}{20}{subsubsection.2.3.1}%
+\contentsline {subsubsection}{\numberline {2.3.2}Прекращение работы с PCI (PCI$\_$Close)}{21}{subsubsection.2.3.2}%
+\contentsline {subsubsection}{\numberline {2.3.3}Функция записи данных в устройство PCI-КМБО (PCI$\_$Write)}{22}{subsubsection.2.3.3}%
+\contentsline {subsubsection}{\numberline {2.3.4}Функция чтения данных из устройства PCI-КМБО (PCI$\_$Read)}{23}{subsubsection.2.3.4}%
+\contentsline {subsection}{\numberline {2.4}Ethernet-КМБО}{23}{subsection.2.4}%
+\contentsline {subsubsection}{\numberline {2.4.1}Функция инициализации (MC$\_$Open)}{23}{subsubsection.2.4.1}%
+\contentsline {subsubsection}{\numberline {2.4.2}Прекращение работы с MC (MC$\_$Close)}{25}{subsubsection.2.4.2}%
+\contentsline {subsubsection}{\numberline {2.4.3}Функция записи данных в устройство MC-КМБО (MC$\_$Write)}{26}{subsubsection.2.4.3}%
+\contentsline {subsubsection}{\numberline {2.4.4}Функция чтения данных из устройства MC-КМБО (MC$\_$Read)}{27}{subsubsection.2.4.4}%
+\contentsline {subsubsection}{\numberline {2.4.5}Функция инициализации сокета МКИО (Init)}{27}{subsubsection.2.4.5}%
+\contentsline {subsubsection}{\numberline {2.4.6}Функция инициализации сокета КМБО (InitCom$\_$Kmbo)}{29}{subsubsection.2.4.6}%
+\contentsline {subsection}{\numberline {2.5}Вывод}{29}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Технологический раздел}{30}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Язык программирования}{30}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Используемые классы}{30}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Используемые классы}{32}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Вывод}{33}{subsection.3.4}%
+\contentsline {section}{Заключение}{34}{subsection.3.4}%
+\contentsline {section}{Литература}{35}{subsection.3.4}%
+\contentsline {section}{Приложение А}{36}{subsection.3.4}%
+\contentsline {section}{Приложение Б}{40}{lstnumber.1.167}%
+\contentsline {section}{Приложение В}{50}{lstnumber.2.388}%
+\contentsline {section}{Приложение Г}{53}{lstnumber.3.124}%
+\contentsline {section}{Приложение Д}{58}{lstnumber.4.167}%

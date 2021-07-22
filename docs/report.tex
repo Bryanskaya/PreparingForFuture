@@ -1,0 +1,60 @@
+\documentclass[12pt, a4paper]{article}
+\include{format.inc}
+
+\begin{document}
+%	\counterwithin{lstlisting}{section}
+%	\includepdf[pages=-]{titlesheet.pdf}
+	\includepdf[pages=1]{title.pdf}
+	\includepdf[pages=1]{task.pdf}
+	\includepdf[pages=1]{review.pdf}
+	
+%	\setcounter{page}{3}
+	
+%	\input{00-essay.tex}
+%	\newpage
+	
+	% Содержание
+	\tableofcontents
+	\newpage
+	
+%	\printnomenclature[2em]
+%	В тексте писать так: $\beta$\nomenclature{$\beta$}{Вторая буква греческого алфавита}
+	
+	\input{01-introduction.tex}
+	\newpage
+	
+	\input{02-general_part.tex}
+	\newpage
+	
+%	\setcounter{table}{0}
+%	\setcounter{figure}{0}
+	\input{03-construction_part.tex}
+	\newpage
+	
+%	\setcounter{table}{0}
+	\setcounter{figure}{0}
+	\input{04-technological_part.tex}
+	\newpage
+	
+	\input{05-conclusion.tex}
+	\newpage
+	
+	\input{99-bib.tex}
+	\newpage
+	
+	\input{100-add.tex}
+	\newpage
+	
+	\input{101-add.tex}
+	\newpage
+	
+	\input{102-add.tex}
+	\newpage
+	
+	\input{103-add.tex}
+	\newpage
+	
+	\input{104-add.tex}
+	\newpage
+	
+\end{document}

@@ -1,0 +1,212 @@
+\section*{\hfill Приложение Д \hfill}
+\addcontentsline{toc}{section}{Приложение Д}
+Приведены листинги классов, описывающих ошибки.
+
+\begin{lstlisting}[label=err,caption=Ошибки]
+namespace Errs
+{
+	public class BErr
+	{
+		public const int RUS = 0;
+		public const int ENG = 1;
+		
+		public static Dictionary<UInt64, String[]> errs;
+		
+		public static String getByCode(UInt64 code, int lang)
+		{
+			if (errs.ContainsKey(code))
+				return "Code = " + code.ToString() + ". " + errs[code][0];
+			else
+			{
+				IntPtr lpMsgBuf = IntPtr.Zero;
+				
+				if (TKernel32.FormatMessage(TKernel32.FormatMessageFlags.FORMAT_MESSAGE_ALLOCATE_BUFFER |
+				TKernel32.FormatMessageFlags.FORMAT_MESSAGE_FROM_SYSTEM |
+				TKernel32.FormatMessageFlags.FORMAT_MESSAGE_IGNORE_INSERTS,
+				IntPtr.Zero,
+				(uint)code,
+				0,
+				ref lpMsgBuf,
+				0,
+				IntPtr.Zero) == 0)
+					return "Code = " + code.ToString() + ". Not defined mistake";
+				
+				return "Code = " + code.ToString() + ". " + Marshal.PtrToStringAnsi(lpMsgBuf);
+			}
+		}
+		
+		public static void Add(UInt64 code, String msgEng, String msgRus)
+		{
+			errs.Add(code, new String[2] { msgEng, msgRus });
+		}
+	}
+	
+	public class RObj
+	{
+		private UInt64 _code = 0;
+		private String _msg;
+		
+		public UInt64 Code
+		{
+			get
+			{
+				return _code;
+			}
+			
+			set
+			{
+				_code = value;
+				_msg = BErr.getByCode(_code, BErr.ENG);
+			}
+		}
+		
+		public String Msg
+		{
+			get
+			{
+				return _msg;
+			}
+		}
+		
+		public RObj()
+		{
+			_msg = BErr.getByCode(_code, BErr.ENG);
+		}
+		
+		public RObj(UInt64 code)
+		{
+			this._code = code;
+			_msg = BErr.getByCode(code, BErr.ENG);
+		}
+		
+		public RObj(int lang)
+		{
+			_msg = BErr.getByCode(_code, lang);
+		}
+		
+		public RObj(UInt64 code, int lang)
+		{
+			this._code = code;
+			_msg = BErr.getByCode(code, lang);
+		}
+	}
+
+	public class Errs_mc : BErr
+	{
+		static public void Init()
+		{
+			if (errs != null)
+			errs.Clear();
+			
+			errs = new Dictionary<UInt64, String[]>()
+			{
+				[0] = new String[2]{ "OK"},
+				
+				[0xC0000001L] = new String[2] { "Creation of socket for transfering data was FAILED"},
+				
+				[0xC0000002L] = new String[2] { "Binding a socket was FAILED, error in calling function 'bind'"},
+				
+				[0xC0000003L] = new String[2] { "Error in setting timeout for receiving the data from clients to socket"},
+				
+				[0xC0000004L] = new String[2] { "Error in setting timeout for sending the data to clients from socket"},
+				
+				[0xC0000005L] = new String[2] { "Error in creation of connection point"},
+				
+				[0xC0000006L] = new String[2] { "Connection with mc was FAILED"},
+				
+				[0xC0000007L] = new String[2] { "Error in initialization of module mc"},
+				
+				[0xC0000008L] = new String[2] { "There is no available data"},
+				
+			};
+		}
+	}
+
+    public class ErrsPCI : BErr
+	{                        
+		static public void Init()
+		{
+			if (errs != null)
+			errs.Clear();
+			
+			errs = new Dictionary<UInt64, String[]>()
+			{
+				[0] = new String[2]{ "OK"},
+				
+				[0xE0000001L] = new String[2]{ "The zero-length buffer was passed to the driver for receiving/transmitting"},
+				
+				[0xE0000002L] = new String[2]{ "The buffer with too large length was passed to the driver for receiving/transmitting"},
+				
+				[0xE0000003L] = new String[2]{ "The buffer with incorrect length was passed to the driver for executing command"},
+				
+				[0xE0000004L] = new String[2]{ "The incorrect data was passed to the driver for executing command"},
+				
+				[0xE0000005L] = new String[2]{ "The attribute 'Counter work' was set after the exchange"},
+				
+				[0xE0000006L] = new String[2]{ "The attribute 'Parity bit control' was set after the exchange"},
+				
+				[0xE0000007L] = new String[2]{ "No interruption at the end of the exchange"}
+			};
+		}
+	}
+
+    public class ErrsUSB : BErr
+	{
+		static public void Init()
+		{
+			if (errs != null)
+			errs.Clear();
+			
+			errs = new Dictionary<UInt64, String[]>()
+			{
+				[0] = new String[2]{ "OK"},
+				
+				[1] = new String[2]{ "The descriptor is incorrect"},
+				
+				[2] = new String[2]{ "The USB device is not found"},
+				
+				[3] = new String[2]{ "The channel is not initialized"},
+				
+				[4] = new String[2]{ "Input/Output error"},
+				
+				[5] = new String[2]{ "Nothing to transmit"},
+				
+				[6] = new String[2]{ "The resource is unavailable"},
+				
+				[7] = new String[2]{ "Incorrect exchange rate"},
+				
+				[8] = new String[2]{ "Erasing is not available"},
+				
+				[9] = new String[2]{ "Recording is impossible"},
+				
+				[10] = new String[2]{ "Recording error"},
+				
+				[11] = new String[2]{ "EEPROM reading is impossible"},
+				
+				[12] = new String[2]{ "EEPROM recording is impossible"},
+				
+				[13] = new String[2]{ "EEPROM erasing is impossible"},
+				
+				[14] = new String[2]{ "There is no EEPROM"},
+				
+				[15] = new String[2]{ "The EEPROM is not programmable"},
+				
+				[16] = new String[2]{ "The arguments are incorrect"},
+				
+				[17] = new String[2]{ "Not defined mistake"},
+				
+				[18] = new String[2]{ "W/R error"},
+				
+				[19] = new String[2]{ "Status word is not accepted"},
+				
+				[20] = new String[2]{ "Status word error"},
+				
+				[21] = new String[2]{ "Counter work"},
+				
+				[22] = new String[2]{ "Parity bit error"}
+			};
+		}
+	}
+}
+
+\end{lstlisting}
